@@ -1,0 +1,59 @@
+{
+  "name": "@0pvalencia/db-introspector-mcp",
+  "version": "0.1.0",
+  "description": "MCP introspector PostgreSQL (tablas, FKs, DOT ER).",
+  "type": "module",
+  "bin": {
+    "db-introspector-mcp": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js",
+    "start": "node dist/cli.js",
+    "dev": "node --import tsx src/cli.ts",
+    "check": "tsc --noEmit -p tsconfig.json",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "pg": "^8.16.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "license": "MIT",
+  "author": "0PValencia",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0PValencia/db-introspector-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0PValencia/db-introspector-mcp/issues"
+  },
+  "homepage": "https://github.com/0PValencia/db-introspector-mcp#readme",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cursor",
+    "claude",
+    "ai",
+    "postgresql",
+    "schema",
+    "er-diagram"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/cli.js"
+}
