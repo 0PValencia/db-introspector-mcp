@@ -1,20 +1,21 @@
 {
   "name": "@0pvalencia/db-introspector-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP introspector PostgreSQL (tablas, FKs, DOT ER).",
   "type": "module",
   "bin": {
     "db-introspector-mcp": "dist/cli.js"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js",
+    "build": "tsc -p tsconfig.json && node scripts/link-bin.mjs",
     "start": "node dist/cli.js",
     "dev": "node --import tsx src/cli.ts",
     "check": "tsc --noEmit -p tsconfig.json",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "prepare": "node scripts/link-bin.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.0.0",

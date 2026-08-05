@@ -26,7 +26,7 @@ async function withClient<T>(fn: (c: pg.Client) => Promise<T>): Promise<T> {
 
 function createServer(): McpServer {
   const server = new McpServer(
-    { name: "db-introspector-mcp", version: "0.1.0" },
+    { name: "db-introspector-mcp", version: "0.1.1" },
     {
       instructions:
         "Lee el esquema real de PostgreSQL (DATABASE_URL). Usa schema_summary / list_foreign_keys / er_dot y luego diagram-studio (graphviz) o escribe el capítulo de diseño en google-documents-mcp.",
@@ -246,4 +246,9 @@ function createServer(): McpServer {
   return server;
 }
 
-await serveStdio(() => createServer());
+console.error("db-introspector-mcp running on stdio");
+serveStdio(() => createServer(), {
+  onerror: (error) => {
+    console.error("db-introspector-mcp error:", error instanceof Error ? error.message : String(error));
+  },
+});
